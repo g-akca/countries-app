@@ -11,7 +11,7 @@ function SearchBar({ search, setSearch }) {
         placeholder="Search for a country..." 
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="text-[12px] leading-[135%] placeholder:text-grey-250 focus:outline-none tablet:text-base tablet:leading-base tablet:placeholder:text-grey-400" 
+        className="grow text-[12px] leading-[135%] placeholder:text-grey-250 focus:outline-none tablet:text-base tablet:leading-base tablet:placeholder:text-grey-400" 
       />
     </div>
   )
