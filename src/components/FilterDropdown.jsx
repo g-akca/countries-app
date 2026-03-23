@@ -21,7 +21,7 @@ function FilterDropdown() {
         <ul className="absolute left-0 top-full mt-2 px-6 py-4 bg-white rounded-[5px] w-50 shadow-[0_2px_9px_rgba(0,0,0,0.06)] flex flex-col gap-2">
           {options.map(item => (
             <li key={item}>
-              <button onClick={() => setRegion(item)} className="w-full text-start">{item}</button>
+              <button onClick={() => setRegion(item)} className="w-full text-start cursor-pointer">{item}</button>
             </li>
           ))}
         </ul>
