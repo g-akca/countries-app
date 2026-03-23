@@ -7,7 +7,7 @@ import data from "../data/data.json";
 
 function CountryList({ search, region }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 60;
+  const itemsPerPage = 30;
 
   const searchFilteredData = search ? data.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : data;
   const filteredData = region ? searchFilteredData.filter(item => item.region.toLowerCase() === region.toLowerCase()) : searchFilteredData;
