@@ -6,7 +6,7 @@ function CountryStats({ countryData }) {
   const borderCountries = countryData.borders ? countryData.borders.map(code => data.find(c => c.alpha3Code === code).name) : null;
 
   return (
-    <section className="flex flex-col gap-8 tablet:gap-6">
+    <section className="flex flex-col gap-8 tablet:gap-6 desktop:gap-16">
       <div className="flex flex-col gap-8 leading-8 font-light tablet:flex-row tablet:justify-between tablet:text-[16px]">
         <ul className="tablet:max-w-[50%]">
           <li><span className="font-semibold">Native Name:</span> {countryData.nativeName}</li>
