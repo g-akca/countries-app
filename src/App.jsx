@@ -29,7 +29,7 @@ function App() {
         <Route 
           path="/country/:name"
           element={
-            <main className="px-7 py-10">
+            <main className="px-7 py-10 flex justify-center">
               <CountryDetails />
             </main>
           }

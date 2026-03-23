@@ -7,7 +7,7 @@ function CountryDetails() {
   const { name } = useParams();
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-16 max-w-142.5 tablet:gap-14">
       <BackButton />
 
       <CountryInfo name={name} />
