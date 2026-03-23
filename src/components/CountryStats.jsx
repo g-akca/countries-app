@@ -25,7 +25,7 @@ function CountryStats({ countryData }) {
         <div className="flex flex-col gap-4">
           <p className="text-[16px] leading-6 font-semibold">Border Countries:</p>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-wrap gap-2">
             {borderCountries.map(item => (
               <CountryButton 
                 key={item}
