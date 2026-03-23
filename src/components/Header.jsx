@@ -1,9 +1,7 @@
 function Header() {
   return (
     <header>
-      <NavBar />
       
-      <SearchAndFilter />
     </header>
   )
 }
