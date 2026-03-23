@@ -12,7 +12,7 @@ function App() {
   const [region, setRegion] = useState("");
 
   return (
-    <div className="text-base leading-base text-grey-950 dark:text-white bg-grey-50 dark:bg-blue-950 min-h-screen">
+    <div className="text-base leading-base text-grey-950 dark:text-white bg-grey-50 dark:bg-blue-950 min-h-screen transition-all duration-300">
       <Header />
 
       <Routes>

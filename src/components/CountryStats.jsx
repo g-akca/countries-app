@@ -10,7 +10,7 @@ function CountryStats({ countryData }) {
       <div className="flex flex-col gap-8 leading-8 font-light tablet:flex-row tablet:justify-between tablet:text-[16px]">
         <ul className="tablet:max-w-[50%]">
           <li><span className="font-semibold">Native Name:</span> {countryData.nativeName}</li>
-          <li><span className="font-semibold">Population:</span> {countryData.population}</li>
+          <li><span className="font-semibold">Population:</span> {countryData.population.toLocaleString()}</li>
           <li><span className="font-semibold">Region:</span> {countryData.region}</li>
           <li><span className="font-semibold">Sub Region:</span> {countryData.subregion}</li>
           <li><span className="font-semibold">Capital:</span> {countryData.capital}</li>
