@@ -2,8 +2,9 @@ import CountryCard from "./CountryCard";
 
 import data from "../data/data.json";
 
-function CountryList({ search }) {
-  const filteredData = search ? data.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : data;
+function CountryList({ search, region }) {
+  const searchFilteredData = search ? data.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : data;
+  const filteredData = region ? searchFilteredData.filter(item => item.region.toLowerCase() === region.toLowerCase()) : searchFilteredData;
 
   return (
     <section className="grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center tablet:gap-18">
