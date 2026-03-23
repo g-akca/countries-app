@@ -23,7 +23,7 @@ function CountryList({ search, region }) {
 
   return (
     <div className="flex flex-col gap-8 tablet:gap-12 items-center">
-      <section className="w-full grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center tablet:gap-18">
+      <section className="w-full grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center items-stretch tablet:gap-18">
         {paginatedData.map(item => (
           <CountryCard
             key={item.name}

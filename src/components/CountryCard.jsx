@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function CountryCard({ flagUrl, name, population, region, capital }) {
   return (
     <Link to={`/country/${name}`}>
-      <div className="bg-white dark:bg-blue-900 rounded-[5px] overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.1)]">
+      <div className="h-full bg-white dark:bg-blue-900 rounded-[5px] overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.1)]">
         <img src={flagUrl} alt={`${name} flag`} className="w-full h-40 object-cover" />
 
         <div className="px-6 pt-6 pb-12 flex flex-col gap-4">
