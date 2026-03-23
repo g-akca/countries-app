@@ -8,7 +8,7 @@ function CountryStats({ countryData }) {
   return (
     <section className="flex flex-col gap-8 tablet:gap-6">
       <div className="flex flex-col gap-8 leading-8 font-light tablet:flex-row tablet:justify-between tablet:text-[16px]">
-        <ul className="max-w-[50%]">
+        <ul className="tablet:max-w-[50%]">
           <li><span className="font-semibold">Native Name:</span> {countryData.nativeName}</li>
           <li><span className="font-semibold">Population:</span> {countryData.population}</li>
           <li><span className="font-semibold">Region:</span> {countryData.region}</li>
@@ -16,7 +16,7 @@ function CountryStats({ countryData }) {
           <li><span className="font-semibold">Capital:</span> {countryData.capital}</li>
         </ul>
 
-        <ul className="max-w-[50%]">
+        <ul className="tablet:max-w-[50%]">
           <li><span className="font-semibold">Top Level Domain:</span> {countryData.topLevelDomain}</li>
           <li><span className="font-semibold">Currencies:</span> {countryData.currencies.map(cur => cur.code).join(", ")}</li>
           <li><span className="font-semibold">Languages:</span> {countryData.languages.map(lang => lang.name).join(", ")}</li>
@@ -27,7 +27,7 @@ function CountryStats({ countryData }) {
         <div className="flex flex-col gap-4 tablet:flex-row">
           <p className="text-[16px] leading-6 font-semibold tablet:shrink-0">Border Countries:</p>
 
-          <div className="flex justify-between flex-wrap gap-2 tablet:gap-4">
+          <div className="grow grid grid-cols-[repeat(auto-fit,96px)] gap-2 tablet:gap-4">
             {borderCountries.map(item => (
               <CountryButton 
                 key={item}
