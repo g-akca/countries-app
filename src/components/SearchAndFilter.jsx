@@ -3,7 +3,7 @@ import FilterDropdown from "./FilterDropdown";
 
 function SearchAndFilter() {
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <SearchBar />
 
       <FilterDropdown />
