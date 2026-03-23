@@ -12,7 +12,7 @@ function CountryCard({ flagUrl, name, population, region, capital }) {
           <ul className="font-light leading-4 flex flex-col gap-2">
             <li><span className="font-semibold">Population:</span> {population.toLocaleString()}</li>
             <li><span className="font-semibold">Region:</span> {region}</li>
-            <li><span className="font-semibold">Capital:</span> {capital}</li>
+            <li><span className="font-semibold">Capital:</span> {capital.join(", ")}</li>
           </ul>
         </div>
       </div>
