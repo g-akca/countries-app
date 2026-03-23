@@ -4,7 +4,7 @@ function CountryCard({ flagUrl, name, population, region, capital }) {
   return (
     <Link to={`/country/${name}`}>
       <div className="bg-white rounded-[5px] overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.1)]">
-        <img src={flagUrl} className="w-full h-40 object-cover" />
+        <img src={flagUrl} alt={`${name} flag`} className="w-full h-40 object-cover" />
 
         <div className="px-6 pt-6 pb-12 flex flex-col gap-4">
           <p className="text-[18px] font-extrabold leading-base">{name}</p>
