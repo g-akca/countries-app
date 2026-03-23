@@ -25,20 +25,17 @@ function CountryList({ search, region }) {
   return (
     <div className="flex flex-col gap-8 tablet:gap-12 items-center">
       <section className="w-full grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center items-stretch tablet:gap-18">
-        {paginatedData.map(item => {
-          const name = item.name?.common || item.name;
-
-          return (
-            <CountryCard
-              key={item.alpha3Code}
-              flagUrl={item.flags.png}
-              name={name}
-              population={item.population}
-              region={item.region}
-              capital={item.capital}
-            />
-          );
-        })}
+        {paginatedData.map(item => (
+          <CountryCard
+            key={item.cca3 || item.alpha3Code}
+            cca3={item.cca3 || item.alpha3Code}
+            flagUrl={item.flags.png}
+            name={item.name?.common || item.name}
+            population={item.population}
+            region={item.region}
+            capital={item.capital}
+          />
+        ))}
       </section>
 
       <Pagination 

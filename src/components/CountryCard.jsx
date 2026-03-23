@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-function CountryCard({ flagUrl, name, population, region, capital }) {
+function CountryCard({ cca3, flagUrl, name, population, region, capital }) {
   return (
-    <Link to={`/country/${name}`}>
+    <Link to={`/country/${cca3}`}>
       <div className="h-full bg-white dark:bg-blue-900 rounded-[5px] overflow-hidden shadow-[0_0_7px_rgba(0,0,0,0.1)] transition-all duration-300 hover:scale-[1.03] hover:bg-gray-100 dark:hover:bg-white/10 active:scale-[0.97]">
         <img src={flagUrl} alt={`${name} flag`} className="w-full h-40 object-cover" />
 

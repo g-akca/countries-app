@@ -27,7 +27,7 @@ function App() {
         />
 
         <Route 
-          path="/country/:name"
+          path="/country/:cca3"
           element={
             <main className="px-7 py-10 flex justify-center desktop:p-20">
               <CountryDetails />
