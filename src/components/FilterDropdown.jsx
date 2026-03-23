@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 function FilterDropdown({ region, setRegion }) {
   const [open, setOpen] = useState(false);
 
-  const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
     <div className="relative px-6 h-12 w-50 bg-white shadow-[0_2px_9px_rgba(0,0,0,0.06)] flex items-center rounded-[5px] text-[12px] leading-[135%] tablet:h-14 tablet:text-base tablet:leading-base">
