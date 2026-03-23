@@ -10,11 +10,11 @@ function FilterDropdown() {
   const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   return (
-    <div className="relative px-6 h-12 w-50 bg-white shadow-[0_2px_9px_rgba(0,0,0,0.06)] flex items-center rounded-[5px] text-[12px] leading-[135%]">
+    <div className="relative px-6 h-12 w-50 bg-white shadow-[0_2px_9px_rgba(0,0,0,0.06)] flex items-center rounded-[5px] text-[12px] leading-[135%] tablet:h-14 tablet:text-base tablet:leading-base">
       <button type="button" onClick={() => setOpen(prev => !prev)} className="cursor-pointer grow flex justify-between items-center">
-        <p>{region ? region : "Filter by Region"}</p>
+        <p className="leading-[100%]">{region ? region : "Filter by Region"}</p>
 
-        <FontAwesomeIcon icon={faChevronDown} className="text-[8px]" />
+        <FontAwesomeIcon icon={faChevronDown} className="text-[8px] tablet:text-[10px]" />
       </button>
 
       {open && (
