@@ -10,6 +10,7 @@ function CountryList({ search, region }) {
     <section className="grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center tablet:gap-18">
       {filteredData.map(item => (
         <CountryCard
+          key={item.name}
           flagUrl={item.flag}
           name={item.name}
           population={item.population}
