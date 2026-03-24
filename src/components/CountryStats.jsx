@@ -17,7 +17,7 @@ function CountryStats({ countryData }) {
 
       const results = await Promise.all(countryData.borders.map(code => getCountryByCode(code)));
 
-      setBorderCountries(results.filter(Boolean));
+      setBorderCountries(results);
     }
 
     loadBorders();
@@ -27,7 +27,7 @@ function CountryStats({ countryData }) {
     <section className="flex flex-col gap-8 tablet:gap-6 desktop:gap-16">
       <div className="flex flex-col gap-8 leading-8 font-light tablet:flex-row tablet:justify-between tablet:text-[16px]">
         <ul className="tablet:max-w-[50%]">
-          <li><span className="font-semibold">Native Name:</span> {Object.values(countryData.name.nativeName)[0].common || countryData.nativeName}</li>
+          <li><span className="font-semibold">Native Name:</span> {countryData.nativeName}</li>
           <li><span className="font-semibold">Population:</span> {countryData.population.toLocaleString()}</li>
           <li><span className="font-semibold">Region:</span> {countryData.region}</li>
           <li><span className="font-semibold">Sub Region:</span> {countryData.subregion}</li>
@@ -35,9 +35,9 @@ function CountryStats({ countryData }) {
         </ul>
 
         <ul className="tablet:max-w-[50%]">
-          <li><span className="font-semibold">Top Level Domain:</span> {countryData.tld || countryData.topLevelDomain}</li>
-          <li><span className="font-semibold">Currencies:</span> {Object.keys(countryData.currencies || {}).join(", ")}</li>
-          <li><span className="font-semibold">Languages:</span> {Object.values(countryData.languages || {}).join(", ")}</li>
+          <li><span className="font-semibold">Top Level Domain:</span> {countryData.tld}</li>
+          <li><span className="font-semibold">Currencies:</span> {countryData.currencies.join(", ")}</li>
+          <li><span className="font-semibold">Languages:</span> {countryData.languages.join(", ")}</li>
         </ul>
       </div>
 
@@ -48,9 +48,9 @@ function CountryStats({ countryData }) {
           <div className="grow grid grid-cols-[repeat(auto-fit,96px)] gap-2 tablet:gap-4">
             {borderCountries.map(item => (
               <CountryButton 
-                key={item.cca3 || item.alpha3Code}
-                name={item.name?.common || item.name}
-                cca3={item.cca3 || item.alpha3Code}
+                key={item.cca3}
+                name={item.name}
+                cca3={item.cca3}
               />
             ))}
           </div>

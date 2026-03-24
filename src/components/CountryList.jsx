@@ -27,10 +27,10 @@ function CountryList({ search, region }) {
       <section className="w-full grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center items-stretch tablet:gap-18">
         {paginatedData.map(item => (
           <CountryCard
-            key={item.cca3 || item.alpha3Code}
-            cca3={item.cca3 || item.alpha3Code}
-            flagUrl={item.flags.png}
-            name={item.name?.common || item.name}
+            key={item.cca3}
+            cca3={item.cca3}
+            flagUrl={item.flag}
+            name={item.name}
             population={item.population}
             region={item.region}
             capital={item.capital}
