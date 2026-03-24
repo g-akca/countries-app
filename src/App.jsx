@@ -4,6 +4,8 @@ import CountryList from "./components/CountryList";
 
 import CountryDetails from "./components/CountryDetails";
 
+import NotFound from "./components/NotFound";
+
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -33,6 +35,15 @@ function App() {
               <CountryDetails />
             </main>
           }
+        />
+
+        <Route 
+          path="*" 
+          element={
+            <main className="p-8 flex justify-center desktop:p-12">
+              <NotFound />
+            </main>
+          } 
         />
       </Routes>
     </div>
