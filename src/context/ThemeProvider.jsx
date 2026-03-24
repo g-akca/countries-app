@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useLayoutEffect } from "react";
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
