@@ -24,6 +24,8 @@ function CountryList({ search, region }) {
   const paginatedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
   useEffect(() => {
+    if (!filteredData.length) return;
+
     if (page !== safePage) {
       setSearchParams(prev => {
         const params = new URLSearchParams(prev);
@@ -31,17 +33,13 @@ function CountryList({ search, region }) {
         return params;
       }, { replace: true });
     }
-  }, [page, safePage, setSearchParams])
+  }, [page, safePage, setSearchParams, filteredData.length]);
 
   const handlePageChange = (newPage) => {
     setSearchParams(prev => {
       const params = new URLSearchParams(prev);
       params.set("page", newPage);
       return params;
-    });
-
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
