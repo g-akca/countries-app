@@ -2,7 +2,7 @@ import MuiPagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { useTheme } from "../context/ThemeProvider";
+import { useTheme } from "/src/context/ThemeProvider";
 
 function Pagination({ currentPage, setCurrentPage, totalPages }) {
   const { darkMode } = useTheme();

@@ -1,4 +1,4 @@
-import CountryDetails from "../components/CountryDetails";
+import CountryDetails from "../features/country/CountryDetails";
 
 function CountryPage() {
   return (

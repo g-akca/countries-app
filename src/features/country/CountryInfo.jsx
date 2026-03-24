@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useCountries } from "../context/CountriesProvider";
+import { useCountries } from "/src/context/CountriesProvider";
 
 import CountryStats from "./CountryStats";
 

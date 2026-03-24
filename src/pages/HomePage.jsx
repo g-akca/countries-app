@@ -1,5 +1,5 @@
-import SearchAndFilter from "../components/SearchAndFilter";
-import CountryList from "../components/CountryList";
+import SearchAndFilter from "../features/home/SearchAndFilter";
+import CountryList from "../features/home/CountryList";
 
 import { useState } from "react";
 

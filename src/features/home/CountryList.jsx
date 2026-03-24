@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import CountryCard from "./CountryCard";
 import Pagination from "./Pagination";
 
-import { useCountries } from "../context/CountriesProvider";
+import { useCountries } from "/src/context/CountriesProvider";
 
 function CountryList({ search, region }) {
   const { countries } = useCountries();

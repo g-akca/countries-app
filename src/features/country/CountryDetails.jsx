@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 
-import BackButton from "./BackButton";
+import BackButton from "/src/components/ui/BackButton";
 import CountryInfo from "./CountryInfo";
 
 function CountryDetails() {

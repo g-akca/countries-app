@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-regular-svg-icons";
 
-import { useTheme } from "../context/ThemeProvider";
+import { useTheme } from "/src/context/ThemeProvider";
 
 function ThemeToggler() {
   const { darkMode, setDarkMode } = useTheme();

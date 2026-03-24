@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CountryButton from "./CountryButton";
 
-import { useCountries } from "../context/CountriesProvider";
+import { useCountries } from "/src/context/CountriesProvider";
 
 function CountryStats({ countryData }) {
   const { getCountryByCode } = useCountries();

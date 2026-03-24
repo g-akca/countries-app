@@ -1,4 +1,4 @@
-import ThemeToggler from "./ThemeToggler";
+import ThemeToggler from "../ui/ThemeToggler";
 
 import { NavLink } from "react-router";
 

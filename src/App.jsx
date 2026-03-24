@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import Header from "./components/layout/Header";
 
 import HomePage from "./pages/HomePage";
 import CountryPage from "./pages/CountryPage";
