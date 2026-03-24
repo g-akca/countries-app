@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 import CountryCard from "./CountryCard";
 import Pagination from "./Pagination";
@@ -7,20 +8,42 @@ import { useCountries } from "../context/CountriesProvider";
 
 function CountryList({ search, region }) {
   const { countries } = useCountries();
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 30;
 
   const searchFilteredData = search ? countries.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : countries;
   const filteredData = region ? searchFilteredData.filter(item => item.region.toLowerCase() === region.toLowerCase()) : searchFilteredData;
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const page = parseInt(searchParams.get("page") || "1");
+  const itemsPerPage = 30;
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
+
+  const safePage = Math.min(Math.max(page, 1), totalPages || 1);
+  const startIndex = (safePage - 1) * itemsPerPage;
 
   const paginatedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [search, region]);
+    if (page !== safePage) {
+      setSearchParams(prev => {
+        const params = new URLSearchParams(prev);
+        params.set("page", safePage);
+        return params;
+      }, { replace: true });
+    }
+  }, [page, safePage, setSearchParams])
+
+  const handlePageChange = (newPage) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+      params.set("page", newPage);
+      return params;
+    });
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   return (
     <div className="flex flex-col gap-8 tablet:gap-12 items-center">
@@ -39,8 +62,8 @@ function CountryList({ search, region }) {
       </section>
 
       <Pagination 
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        currentPage={safePage}
+        setCurrentPage={handlePageChange}
         totalPages={totalPages}
       />
     </div>
