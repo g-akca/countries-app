@@ -41,14 +41,37 @@ export function CountriesProvider({ children }) {
 
   useEffect(() => {
     async function fetchCountries() {
+      try {
+        const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3");
+
+        if (!res.ok) throw new Error("API failed");
+
+        const data = await res.json();
+        setCountries(data.map(normalizeCountry));
+      }
+      catch (error) {
+        console.error("Using fallback data:", error);
         setCountries(fallbackData.map(normalizeCountry));
+      }
     }
 
     fetchCountries();
   }, [])
 
   async function getCountryByCode(code) {
+    try {
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+
+      if (!res.ok) throw new Error("API failed");
+
+      const data = await res.json();
+
+      return normalizeCountry(data[0]);
+    }
+    catch (error) {
+      console.error("Falling back to local data:", error);
       return normalizeCountry(fallbackData.find(item => item.alpha3Code === code));
+    }
   }
   
   return (
