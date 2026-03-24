@@ -24,45 +24,31 @@ export function CountriesProvider({ children }) {
       tld: Array.isArray(country.tld)
         ? country.tld : country.tld
         ? [country.tld] : country.topLevelDomain || ["Unknown"],
-      currencies: country.currencies ? Object.keys(country.currencies) : ["Unknown"],
-      languages: country.languages ? Object.values(country.languages) : ["Unknown"],
+      currencies: country.currencies
+        ? Array.isArray(country.currencies)
+          ? country.currencies.map(c => c.code || c.name)
+          : Object.values(country.currencies).map(c => c.name)
+        : ["Unknown"],
+
+      languages: country.languages
+        ? Array.isArray(country.languages)
+          ? country.languages.map(l => l.name)
+          : Object.values(country.languages)
+        : ["Unknown"],
       borders: country.borders || []
     };
   }
 
   useEffect(() => {
     async function fetchCountries() {
-      try {
-        const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3");
-
-        if (!res.ok) throw new Error("API failed");
-
-        const data = await res.json();
-        setCountries(data.map(normalizeCountry));
-      }
-      catch (error) {
-        console.error("Using fallback data:", error);
         setCountries(fallbackData.map(normalizeCountry));
-      }
     }
 
     fetchCountries();
   }, [])
 
   async function getCountryByCode(code) {
-    try {
-      const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
-
-      if (!res.ok) throw new Error("API failed");
-
-      const data = await res.json();
-
-      return normalizeCountry(data[0]);
-    }
-    catch (error) {
-      console.error("Falling back to local data:", error);
       return normalizeCountry(fallbackData.find(item => item.alpha3Code === code));
-    }
   }
   
   return (
