@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 import CountryCard from "./CountryCard";
 import Pagination from "./Pagination";
@@ -9,8 +9,14 @@ import { useCountries } from "/src/context/CountriesProvider";
 function CountryList({ search, region }) {
   const { countries } = useCountries();
 
-  const searchFilteredData = search ? countries.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : countries;
-  const filteredData = region ? searchFilteredData.filter(item => item.region.toLowerCase() === region.toLowerCase()) : searchFilteredData;
+  const filteredData = useMemo(() => {
+    let data = countries;
+
+    data = search ? data.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : data;
+    data = region ? data.filter(item => item.region.toLowerCase() === region.toLowerCase()) : data;
+
+    return data;
+  }, [countries, search, region]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
