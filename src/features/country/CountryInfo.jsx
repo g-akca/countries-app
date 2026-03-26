@@ -1,29 +1,6 @@
-import { useState, useEffect } from "react";
-
-import { useCountries } from "/src/context/CountriesProvider";
-
 import CountryStats from "./CountryStats";
-import LoadingDiv from "/src/components/ui/LoadingDiv";
 
-function CountryInfo({ cca3 }) {
-  const { getCountryByCode } = useCountries();
-  const [countryData, setCountryData] = useState(null);
-
-  useEffect(() => {
-    async function loadCountry() {
-      const data = await getCountryByCode(cca3);
-      setCountryData(data);
-    }
-
-    loadCountry();
-  }, [cca3]);
-
-  if (!countryData) {
-    return (
-      <LoadingDiv />
-    )
-  }
-
+function CountryInfo({ countryData }) {
   return (
     <section className="flex flex-col gap-12 tablet:gap-14 desktop:grid desktop:grid-cols-[1fr_1.2fr] desktop:gap-30 desktop:items-center">
       <img src={countryData.flag} alt={`${countryData.name} flag`} className="w-full rounded-md tablet:rounded-[10px]" />

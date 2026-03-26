@@ -16,6 +16,7 @@ function App() {
 
         <Route path="/country/:cca3" element={ <CountryPage /> } />
 
+        <Route path="/404" element={ <NotFoundPage /> } />
         <Route path="*" element={ <NotFoundPage /> } />
       </Routes>
     </div>
