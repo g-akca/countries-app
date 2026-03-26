@@ -7,7 +7,11 @@ import Pagination from "./Pagination";
 import { useCountries } from "/src/context/CountriesProvider";
 
 function CountryList({ search, region }) {
-  const { countries } = useCountries();
+  const { countries, loading } = useCountries();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   const filteredData = useMemo(() => {
     let data = countries;

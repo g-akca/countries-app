@@ -66,8 +66,6 @@ export function CountriesProvider({ children }) {
 
   async function getCountryByCode(code) {
     try {
-      setLoading(true);
-
       const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
 
       if (!res.ok) throw new Error("API failed");
@@ -79,9 +77,6 @@ export function CountriesProvider({ children }) {
     catch (error) {
       console.error("Falling back to local data:", error);
       return normalizeCountry(fallbackData.find(item => item.alpha3Code === code));
-    }
-    finally {
-      setLoading(false);
     }
   }
   
