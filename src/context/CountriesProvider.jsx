@@ -2,10 +2,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 import fallbackData from "../data/data.json";
 
+
 const CountriesContext = createContext();
 
 export function CountriesProvider({ children }) {
   const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   function normalizeCountry(country) {
     return {
@@ -29,7 +31,6 @@ export function CountriesProvider({ children }) {
           ? country.currencies.map(c => c.code || c.name)
           : Object.values(country.currencies).map(c => c.name)
         : ["Unknown"],
-
       languages: country.languages
         ? Array.isArray(country.languages)
           ? country.languages.map(l => l.name)
@@ -42,6 +43,8 @@ export function CountriesProvider({ children }) {
   useEffect(() => {
     async function fetchCountries() {
       try {
+        setLoading(true);
+
         const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3");
 
         if (!res.ok) throw new Error("API failed");
@@ -53,13 +56,18 @@ export function CountriesProvider({ children }) {
         console.error("Using fallback data:", error);
         setCountries(fallbackData.map(normalizeCountry));
       }
+      finally {
+        setLoading(false);
+      }
     }
 
     fetchCountries();
-  }, [])
+  }, []);
 
   async function getCountryByCode(code) {
     try {
+      setLoading(true);
+
       const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
 
       if (!res.ok) throw new Error("API failed");
@@ -72,10 +80,13 @@ export function CountriesProvider({ children }) {
       console.error("Falling back to local data:", error);
       return normalizeCountry(fallbackData.find(item => item.alpha3Code === code));
     }
+    finally {
+      setLoading(false);
+    }
   }
   
   return (
-    <CountriesContext.Provider value={{ countries, getCountryByCode }}>
+    <CountriesContext.Provider value={{ countries, loading, getCountryByCode }}>
       {children}
     </CountriesContext.Provider>
   )
