@@ -1,16 +1,19 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useMemo } from "react";
 
+import { useCountries } from "/src/context/CountriesProvider";
+
 import CountryCard from "./CountryCard";
 import Pagination from "./Pagination";
-
-import { useCountries } from "/src/context/CountriesProvider";
+import LoadingDiv from "/src/components/ui/LoadingDiv";
 
 function CountryList({ search, region }) {
   const { countries, loading } = useCountries();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <LoadingDiv />
+    )
   }
 
   const filteredData = useMemo(() => {

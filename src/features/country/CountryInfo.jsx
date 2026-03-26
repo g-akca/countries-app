@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useCountries } from "/src/context/CountriesProvider";
 
 import CountryStats from "./CountryStats";
+import LoadingDiv from "/src/components/ui/LoadingDiv";
 
 function CountryInfo({ cca3 }) {
   const { getCountryByCode } = useCountries();
@@ -18,7 +19,9 @@ function CountryInfo({ cca3 }) {
   }, [cca3]);
 
   if (!countryData) {
-    return <p>Loading...</p>;
+    return (
+      <LoadingDiv />
+    )
   }
 
   return (
