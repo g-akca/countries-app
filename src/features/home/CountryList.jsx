@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { useEffect, useMemo } from "react";
 
 import { useCountries } from "/src/context/CountriesProvider";

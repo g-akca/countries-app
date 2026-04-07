@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 function CountryButton({ name, cca3 }) {
   return (

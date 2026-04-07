@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 function CountryCard({ cca3, flagUrl, name, population, region, capital }) {
   return (

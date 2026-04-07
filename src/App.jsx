@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import CountryPage from "./pages/CountryPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router";
 
 function App() {
   return (
