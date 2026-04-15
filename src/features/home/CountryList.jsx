@@ -7,23 +7,17 @@ import CountryCard from "./CountryCard";
 import Pagination from "./Pagination";
 import LoadingDiv from "/src/components/ui/LoadingDiv";
 
-function CountryList({ search, region }) {
+function CountryList({ search, regions }) {
   const { countries, loading } = useCountries();
-
-  if (loading) {
-    return (
-      <LoadingDiv />
-    )
-  }
 
   const filteredData = useMemo(() => {
     let data = countries;
 
     data = search ? data.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : data;
-    data = region ? data.filter(item => item.region.toLowerCase() === region.toLowerCase()) : data;
+    data = regions?.length ? data.filter(item => regions.some(r => r.toLowerCase() === item.region.toLowerCase())) : data;
 
     return data;
-  }, [countries, search, region]);
+  }, [countries, search, regions]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -54,6 +48,12 @@ function CountryList({ search, region }) {
       params.set("page", newPage);
       return params;
     });
+  }
+
+  if (loading) {
+    return (
+      <LoadingDiv />
+    )
   }
 
   return (

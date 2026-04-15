@@ -5,13 +5,13 @@ import { useState } from "react";
 
 function HomePage() {
   const [search, setSearch] = useState("");
-  const [region, setRegion] = useState("");
+  const [regions, setRegions] = useState("");
 
   return (
     <main className="px-4 py-6 flex flex-col gap-8 tablet:px-10 tablet:py-12 tablet:gap-12 desktop:px-20">
-      <SearchAndFilter search={search} setSearch={setSearch} region={region} setRegion={setRegion} />
+      <SearchAndFilter search={search} setSearch={setSearch} regions={regions} setRegions={setRegions} />
 
-      <CountryList search={search} region={region} />
+      <CountryList search={search} regions={regions} />
     </main>
   )
 }
