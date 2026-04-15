@@ -56,6 +56,16 @@ function CountryList({ search, regions }) {
     )
   }
 
+  if (!loading && filteredData.length === 0) {
+    return (
+      <div className="flex justify-center items-center py-8 tablet:py-12 desktop:py-16 text-center">
+        <p className="tablet:text-[20px] text-grey-400 dark:text-grey-250">
+          No countries found.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-8 tablet:gap-12 items-center">
       <section className="w-full grid grid-cols-[repeat(auto-fit,264px)] gap-10 justify-center items-stretch tablet:gap-18">
